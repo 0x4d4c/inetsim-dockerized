@@ -5,7 +5,7 @@ ENV INETSIM_VERSION=1.2.6 \
     INETSIM_SIGNING_KEY_ID=0x6881B9A7E9F601C8 \
     INETSIM_SIGNING_KEY_FINGERPRINT=5ADF5239D9AAAD3C455094916881B9A7E9F601C8
 
-COPY ./patches/untaint-dns-port.patch /tmp/
+COPY ./patches/00-untaint-dns-port.patch /tmp/
 COPY ./generate-inetsim-config.sh /usr/local/bin/generate-inetsim-config.sh
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
@@ -39,7 +39,7 @@ RUN set -eu && \
     mkdir -p /opt && \
     mv inetsim-${INETSIM_VERSION} /opt/inetsim && \
     cd /opt/inetsim && \
-    patch -p1 < /tmp/untaint-dns-port.patch && \
+    patch -p1 < /tmp/00-untaint-dns-port.patch && \
     ./setup.sh && \
     rm -rf \
         inetsim-${INETSIM_VERSION}.tar.gz \

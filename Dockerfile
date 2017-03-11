@@ -38,8 +38,8 @@ RUN set -eu && \
     tar -xf inetsim-${INETSIM_VERSION}.tar.gz && \
     mkdir -p /opt && \
     mv inetsim-${INETSIM_VERSION} /opt/inetsim && \
-    patch -p0 < /tmp/untaint-dns-port.patch && \
     cd /opt/inetsim && \
+    patch -p1 < /tmp/untaint-dns-port.patch && \
     ./setup.sh && \
     rm -rf \
         inetsim-${INETSIM_VERSION}.tar.gz \

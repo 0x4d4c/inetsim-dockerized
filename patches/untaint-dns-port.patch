@@ -1,6 +1,6 @@
 diff -Naur opt/inetsim.orig/lib/INetSim/DNS.pm opt/inetsim/lib/INetSim/DNS.pm
---- opt/inetsim.orig/lib/INetSim/DNS.pm	2016-08-29 09:43:28.000000000 +0200
-+++ opt/inetsim/lib/INetSim/DNS.pm	2017-03-08 22:45:46.297547205 +0100
+--- inetsim.orig/lib/INetSim/DNS.pm	2016-08-29 09:43:28.000000000 +0200
++++ inetsim/lib/INetSim/DNS.pm	2017-03-08 22:45:46.297547205 +0100
 @@ -30,11 +30,13 @@
      my $localaddr = (defined &INetSim::Config::getConfigParameter("DNS_BindAddress") ? &INetSim::Config::getConfigParameter("DNS_BindAddress") : &INetSim::Config::getConfigParameter("Default_BindAddress"));
      $localaddr =~ /^(.*)$/;  # fool taint check

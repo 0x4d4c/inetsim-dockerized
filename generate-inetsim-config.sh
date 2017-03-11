@@ -42,12 +42,26 @@ write_config_value dns_default_ip "$INETSIM_DNS_DEFAULT_IP"
 write_config_value dns_default_hostname "$INETSIM_DNS_DEFAULT_HOSTNAME"
 write_config_value dns_default_domainname "$INETSIM_DNS_DEFAULT_DOMAINNAME"
 write_config_value dns_version "$INETSIM_DNS_VERSION"
-
 # Service HTTP
 write_config_value http_bind_port "$INETSIM_HTTP_BIND_PORT"
 write_config_value http_version "$INETSIM_HTTP_VERSION"
 write_config_value http_fakemode "$INETSIM_HTTP_FAKEMODE"
-
+# Service HTTPS
+#  TODO
+# Service SMTP
+#  TODO
+# Service SMTPS
+#  TODO
+# Service POP3
+#  TODO
+# Service POP3S
+#  TODO
+# Service TFTP
+#  TODO
+# Service FTP
+#  TODO
+# Service FTPS
+#  TODO
 # Service NTP
 write_config_value ntp_bind_port "$INETSIM_NTP_BIND_PORT"
 write_config_value ntp_server_ip "$INETSIM_NTP_SERVER_IP"
@@ -64,3 +78,19 @@ write_config_value daytime_bind_port "$INETSIM_DAYTIME_BIND_PORT"
 write_config_value echo_bind_port "$INETSIM_ECHO_BIND_PORT"
 # Service Discard
 write_config_value discard_bind_port "$INETSIM_DISCARD_BIND_PORT"
+# Service Quotd
+write_config_value quotd_bind_port "$INETSIM_QUOTD_BIND_PORT"
+# Service Chargen
+write_config_value chargen_bind_port "$INETSIM_CHARGEN_BIND_PORT"
+# Service Finger
+write_config_value finger_bind_port "$INETSIM_FINGER_BIND_PORT"
+# Service Ident
+write_config_value ident_bind_port "$INETSIM_IDENT_BIND_PORT"
+# Service Syslog
+write_config_value syslog_bind_port "$INETSIM_SYSLOG_BIND_PORT"
+write_config_value syslog_trim_maxlength "$INETSIM_SYSLOG_TRIM_MAXLENGTH"
+write_config_value syslog_accept_invalid "$INETSIM_SYSLOG_ACCEPT_INVALID"
+# Service Dummy
+write_config_value dummy_bind_port "$INETSIM_DUMMY_BIND_PORT"
+write_config_value dummy_banner "$INETSIM_DUMMY_BANNER"
+write_config_value dummy_banner_wait "$INETSIM_DUMMY_BANNER_WAIT"

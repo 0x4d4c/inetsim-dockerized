@@ -59,9 +59,18 @@ write_config_value http_fakemode "$INETSIM_HTTP_FAKEMODE"
 # Service TFTP
 #  TODO
 # Service FTP
-#  TODO
+write_config_value ftp_bind_port "$INETSIM_FTP_BIND_PORT"
+write_config_value ftp_version "$INETSIM_FTP_VERSION"
+write_config_value ftp_banner "$INETSIM_FTP_BANNER"
+write_config_value ftp_recursive_delete "$INETSIM_FTP_RECURSIVE_DELETE"
 # Service FTPS
-#  TODO
+write_config_value ftps_bind_port "$INETSIM_FTPS_BIND_PORT"
+write_config_value ftps_version "$INETSIM_FTPS_VERSION"
+write_config_value ftps_banner "$INETSIM_FTPS_BANNER"
+write_config_value ftps_recursive_delete "$INETSIM_FTPS_RECURSIVE_DELETE"
+write_config_value ftps_ssl_keyfile "$INETSIM_FTPS_SSL_KEYFILE"
+write_config_value ftps_ssl_certfile "$INETSIM_FTPS_SSL_CERTFILE"
+write_config_value ftps_ssl_dhfile "$INETSIM_FTPS_SSL_DHFILE"
 # Service NTP
 write_config_value ntp_bind_port "$INETSIM_NTP_BIND_PORT"
 write_config_value ntp_server_ip "$INETSIM_NTP_SERVER_IP"

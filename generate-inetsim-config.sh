@@ -13,6 +13,16 @@ function write_config_value()
 }
 
 
+function write_config_value_items()
+{
+    if [ $# -eq 2 -a "$2" != "" ]; then
+        for item in ${2//,/ }; do
+            echo "$1" "\"${item%=*}\"" "\"${item#*=}\"" >> $CONFIG_FILE
+        done
+    fi
+}
+
+
 inetsim_services='dns,http,smtp,pop3,tftp,ftp,ntp,time_tcp,time_udp,
                   daytime_tcp,daytime_udp,echo_tcp,echo_udp,discard_tcp,
                   discard_udp,quotd_tcp,quotd_udp,chargen_tcp,chargen_udp,

@@ -6,7 +6,6 @@ ENV INETSIM_VERSION=1.2.6 \
     INETSIM_SIGNING_KEY_FINGERPRINT=5ADF5239D9AAAD3C455094916881B9A7E9F601C8
 
 COPY ./patches /tmp/patches
-COPY ./generate-inetsim-config.sh /usr/local/bin/generate-inetsim-config.sh
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
@@ -42,7 +41,8 @@ RUN set -eu && \
     for p in /tmp/patches/*.patch; do \
         patch -p1 < $p; \
     done && \
-    ./setup.sh && \
+    cp -r data default_data && \
+    mkdir -p conf/default_configs && \
     rm -rf \
         inetsim-${INETSIM_VERSION}.tar.gz \
         inetsim-${INETSIM_VERSION}.tar.gz.sig \
@@ -50,6 +50,13 @@ RUN set -eu && \
         /root/.gnupg && \
     apk del .build-deps
 
+COPY ./default_service_configs /opt/inetsim/conf/default_configs
+COPY ./generate-inetsim-config.sh /usr/local/bin/generate-inetsim-config.sh
+COPY ./populate-data-directory.sh /usr/local/bin/populate-data-directory.sh
+VOLUME ["/opt/inetsim/conf/user_configs", \
+        "/opt/inetsim/data", \
+        "/opt/inetsim/log", \
+        "/opt/inetsim/report"]
 ENV PATH $PATH:/opt/inetsim
 WORKDIR /opt/inetsim/
 CMD ["inetsim"]

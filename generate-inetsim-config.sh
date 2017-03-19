@@ -3,6 +3,8 @@ set -eu
 
 
 CONFIG_FILE='/opt/inetsim/conf/inetsim.conf'
+USER_CONFIG_FILES='/opt/inetsim/conf/user_configs'
+DEFAULT_CONFIG_FILES='/opt/inetsim/conf/default_configs'
 
 
 function write_config_value()
@@ -20,6 +22,17 @@ function write_config_value_items()
             echo "$1" "\"${item%=*}\"" "\"${item#*=}\"" >> $CONFIG_FILE
         done
     fi
+}
+
+
+function write_config_values_from_file()
+{
+    if [ -f "$USER_CONFIG_FILES/$1" ]; then
+        config_file="$USER_CONFIG_FILES/$1"
+    else
+        config_file="$DEFAULT_CONFIG_FILES/$1"
+    fi
+    cat $config_file >> $CONFIG_FILE
 }
 
 
@@ -57,18 +70,74 @@ write_config_value_items dns_static "$INETSIM_DNS_STATIC"
 write_config_value http_bind_port "$INETSIM_HTTP_BIND_PORT"
 write_config_value http_version "$INETSIM_HTTP_VERSION"
 write_config_value http_fakemode "$INETSIM_HTTP_FAKEMODE"
+write_config_values_from_file http_fakefiles
+write_config_values_from_file http_static_fakefiles
 # Service HTTPS
-#  TODO
+write_config_value https_bind_port "$INETSIM_HTTPS_BIND_PORT"
+write_config_value https_version "$INETSIM_HTTPS_VERSION"
+write_config_value https_fakemode "$INETSIM_HTTPS_FAKEMODE"
+write_config_value https_ssl_keyfile "https_key.pem"
+write_config_value https_ssl_certfile "https_cert.pem"
+write_config_value https_ssl_dhfile "https_dhparams.pem"
+write_config_values_from_file https_fakefiles
+write_config_values_from_file https_static_fakefiles
 # Service SMTP
-#  TODO
+write_config_value smtp_bind_port "$INETSIM_SMTP_BIND_PORT"
+write_config_value smtp_fqdn_hostname "$INETSIM_SMTP_FQDN_HOSTNAME"
+write_config_value smtp_banner "$INETSIM_SMTP_BANNER"
+write_config_value smtp_helo_required "$INETSIM_SMTP_HELO_REQUIRED"
+write_config_value smtp_extended_smtp "$INETSIM_SMTP_EXTENDED_SMTP"
+write_config_value smtp_auth_reversibleonly "$INETSIM_SMTP_AUTH_REVERSIBLEONLY"
+write_config_value smtp_auth_required "$INETSIM_SMTP_AUTH_REQUIRED"
+write_config_value smtp_ssl_keyfile "smtp_key.pem"
+write_config_value smtp_ssl_certfile "smtp_cert.pem"
+write_config_value smtp_ssl_dhfile "smtp_dhparams.pem"
+write_config_values_from_file smtp_service_extensions
 # Service SMTPS
-#  TODO
+write_config_value smtps_bind_port "$INETSIM_SMTPS_BIND_PORT"
+write_config_value smtps_fqdn_hostname "$INETSIM_SMTPS_FQDN_HOSTNAME"
+write_config_value smtps_banner "$INETSIM_SMTPS_BANNER"
+write_config_value smtps_helo_required "$INETSIM_SMTPS_HELO_REQUIRED"
+write_config_value smtps_extended_smtp "$INETSIM_SMTPS_EXTENDED_SMTP"
+write_config_value smtps_auth_reversibleonly "$INETSIM_SMTPS_AUTH_REVERSIBLEONLY"
+write_config_value smtps_auth_required "$INETSIM_SMTPS_AUTH_REQUIRED"
+write_config_value smtps_ssl_keyfile "smtps_key.pem"
+write_config_value smtps_ssl_certfile "smtps_cert.pem"
+write_config_value smtps_ssl_dhfile "smtps_dhparams.pem"
+write_config_values_from_file smtps_service_extensions
 # Service POP3
-#  TODO
+write_config_value pop3_bind_port "$INETSIM_POP3_BIND_PORT"
+write_config_value pop3_banner "$INETSIM_POP3_BANNER"
+write_config_value pop3_hostname "$INETSIM_POP3_HOSTNAME"
+write_config_value pop3_mbox_maxmails "$INETSIM_POP3_MBOX_MAXMAILS"
+write_config_value pop3_mbox_reread "$INETSIM_POP3_MBOX_REREAD"
+write_config_value pop3_mbox_rebuild "$INETSIM_POP3_MBOX_REBUILD"
+write_config_value pop3_enable_apop "$INETSIM_POP3_ENABLE_APOP"
+write_config_value pop3_auth_reversibleonly "$INETSIM_POP3_AUTH_REVERSIBLEONLY"
+write_config_value pop3_enable_capabilities "$INETSIM_POP3_ENABLE_CAPABILITIES"
+write_config_value pop3_ssl_keyfile "pop3_key.pem"
+write_config_value pop3_ssl_certfile "pop3_cert.pem"
+write_config_value pop3_ssl_dhfile "pop3_dhparams.pem"
+write_config_values_from_file pop3_capabilities
 # Service POP3S
-#  TODO
+write_config_value pop3s_bind_port "$INETSIM_POP3S_BIND_PORT"
+write_config_value pop3s_banner "$INETSIM_POP3S_BANNER"
+write_config_value pop3s_hostname "$INETSIM_POP3S_HOSTNAME"
+write_config_value pop3s_mbox_maxmails "$INETSIM_POP3S_MBOX_MAXMAILS"
+write_config_value pop3s_mbox_reread "$INETSIM_POP3S_MBOX_REREAD"
+write_config_value pop3s_mbox_rebuild "$INETSIM_POP3S_MBOX_REBUILD"
+write_config_value pop3s_enable_apop "$INETSIM_POP3S_ENABLE_APOP"
+write_config_value pop3s_auth_reversibleonly "$INETSIM_POP3S_AUTH_REVERSIBLEONLY"
+write_config_value pop3s_enable_capabilities "$INETSIM_POP3S_ENABLE_CAPABILITIES"
+write_config_value pop3s_ssl_keyfile "pop3s_key.pem"
+write_config_value pop3s_ssl_certfile "pop3s_cert.pem"
+write_config_value pop3s_ssl_dhfile "pop3s_dhparams.pem"
+write_config_values_from_file pop3s_capabilities
 # Service TFTP
-#  TODO
+write_config_value tftp_bind_port "$INETSIM_TFTP_BIND_PORT"
+write_config_value tftp_allow_overwrite "$INETSIM_TFTP_ALLOW_OVERWRITE"
+write_config_value tftp_enable_options "$INETSIM_TFTP_ENABLE_OPTIONS"
+write_config_values_from_file tftp_options
 # Service FTP
 write_config_value ftp_bind_port "$INETSIM_FTP_BIND_PORT"
 write_config_value ftp_version "$INETSIM_FTP_VERSION"
@@ -79,9 +148,9 @@ write_config_value ftps_bind_port "$INETSIM_FTPS_BIND_PORT"
 write_config_value ftps_version "$INETSIM_FTPS_VERSION"
 write_config_value ftps_banner "$INETSIM_FTPS_BANNER"
 write_config_value ftps_recursive_delete "$INETSIM_FTPS_RECURSIVE_DELETE"
-write_config_value ftps_ssl_keyfile "$INETSIM_FTPS_SSL_KEYFILE"
-write_config_value ftps_ssl_certfile "$INETSIM_FTPS_SSL_CERTFILE"
-write_config_value ftps_ssl_dhfile "$INETSIM_FTPS_SSL_DHFILE"
+write_config_value ftps_ssl_keyfile "ftps_key.pem"
+write_config_value ftps_ssl_certfile "ftps_cert.pem"
+write_config_value ftps_ssl_dhfile "ftps_dhparams.pem"
 # Service NTP
 write_config_value ntp_bind_port "$INETSIM_NTP_BIND_PORT"
 write_config_value ntp_server_ip "$INETSIM_NTP_SERVER_IP"

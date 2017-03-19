@@ -1,0 +1,9 @@
+smtps_service_extension VRFY
+smtps_service_extension EXPN
+smtps_service_extension HELP
+smtps_service_extension 8BITMIME
+smtps_service_extension SIZE 102400000
+smtps_service_extension ENHANCEDSTATUSCODES
+smtps_service_extension AUTH PLAIN LOGIN ANONYMOUS CRAM-MD5 CRAM-SHA1
+smtps_service_extension DSN
+smtps_service_extension ETRN

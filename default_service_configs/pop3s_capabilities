@@ -1,0 +1,5 @@
+pop3s_capability TOP
+pop3s_capability USER
+pop3s_capability SASL PLAIN LOGIN ANONYMOUS CRAM-MD5 CRAM-SHA1
+pop3s_capability UIDL
+pop3s_capability IMPLEMENTATION "INetSim POP3s server"

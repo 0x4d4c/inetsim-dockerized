@@ -1,0 +1,3 @@
+tftp_option BLKSIZE 512 65464
+tftp_option TIMEOUT 5 60
+tftp_option TSIZE 10485760

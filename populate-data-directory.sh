@@ -14,7 +14,7 @@ function create_tls_files()
         ln -s $DATADIR/certs/default_cert.pem $DATADIR/certs/$1_cert.pem
     fi
     if [ ! -f $DATADIR/certs/$1_dhparams.pem ]; then
-        ln -s $DATADIR/certs/default_cert.pem $DATADIR/certs/$1_dhparams.pem
+        ln -s $DATADIR/certs/default_dhparams.pem $DATADIR/certs/$1_dhparams.pem
     fi
 }
 

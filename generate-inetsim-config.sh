@@ -15,16 +15,6 @@ function write_config_value()
 }
 
 
-function write_config_value_items()
-{
-    if [ $# -eq 2 -a "$2" != "" ]; then
-        for item in ${2//,/ }; do
-            echo "$1" "\"${item%=*}\"" "\"${item#*=}\"" >> $CONFIG_FILE
-        done
-    fi
-}
-
-
 function write_config_values_from_file()
 {
     if [ -f "$USER_CONFIG_FILES/$1" ]; then

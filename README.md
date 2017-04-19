@@ -63,8 +63,11 @@ If you don't provide your own files for a service, it will use the default certi
 | `INETSIM_DNS_BIND_PORT` | Port number to bind DNS service to. | `53` |
 | `INETSIM_DNS_DEFAULT_IP` | Default IP address to return with DNS replies. | `10.10.10.1`
 | `INETSIM_DNS_DEFAULT_HOSTNAME` | Default hostname to return with DNS replies. | `somehost` |
-| `INETSIM_DNS_DEFAULT_DOMAINNAME` | Default domain name to return with DNS replies. | `some.domain` |
 | `INETSIM_DNS_VERSION` | DNS version to return. | `"INetSim DNS Server"` |
+| `INETSIM_DNS_DEFAULT_DOMAINNAME` | Default domain name to return with DNS replies. | `some.domain` |
+
+#### Static DNS Mappings
+INetSim allows you to define static domain ↔ IP mappings. These mappings can be used to make the DNS service respond with the defined IPs when the corresponding domains are queried and vice versa. There are no predefined static mappings. That is, the services uses the values of `INETSIM_DNS_DEFAULT_IP` and `INETSIM_DNS_DEFAULT_HOSTNAME` for all answers. If you want to define your own static mappings, you can add them to the file `/opt/inetsim/conf/user_configs/dns_static_mappings`. The syntax is `dns_static <domain> <ip>`.
 
 ### HTTP
 | Parameter | Description | Example |

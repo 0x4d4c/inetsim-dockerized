@@ -65,7 +65,7 @@ write_config_value dns_default_ip "$INETSIM_DNS_DEFAULT_IP"
 write_config_value dns_default_hostname "$INETSIM_DNS_DEFAULT_HOSTNAME"
 write_config_value dns_default_domainname "$INETSIM_DNS_DEFAULT_DOMAINNAME"
 write_config_value dns_version "$INETSIM_DNS_VERSION"
-write_config_value_items dns_static "$INETSIM_DNS_STATIC"
+write_config_values_from_file dns_static_mappings
 # Service HTTP
 write_config_value http_bind_port "$INETSIM_HTTP_BIND_PORT"
 write_config_value http_version "$INETSIM_HTTP_VERSION"

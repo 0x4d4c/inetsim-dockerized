@@ -11,7 +11,7 @@ $ docker run -it --rm --name inetsim \
       -p 127.0.0.1:21:21 \
       -e INETSIM_START_SERVICES=dns,http,https,ftp \
       -e INETSIM_DNS_VERSION="DNS Version" \
-      -p INETSIM_FTPS_BIND_PORT=21 \
+      -e INETSIM_FTPS_BIND_PORT=21 \
       -v $(pwd)/user_configs:/opt/inetsim/conf/user_configs:ro \
       0x4d4c/inetsim
 ```

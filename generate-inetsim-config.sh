@@ -60,12 +60,14 @@ write_config_values_from_file dns_static_mappings
 write_config_value http_bind_port "$INETSIM_HTTP_BIND_PORT"
 write_config_value http_version "$INETSIM_HTTP_VERSION"
 write_config_value http_fakemode "$INETSIM_HTTP_FAKEMODE"
+write_config_value http_post_limit "$INETSIM_HTTP_POST_LIMIT"
 write_config_values_from_file http_fakefiles
 write_config_values_from_file http_static_fakefiles
 # Service HTTPS
 write_config_value https_bind_port "$INETSIM_HTTPS_BIND_PORT"
 write_config_value https_version "$INETSIM_HTTPS_VERSION"
 write_config_value https_fakemode "$INETSIM_HTTPS_FAKEMODE"
+write_config_value https_post_limit "$INETSIM_HTTPS_POST_LIMIT"
 write_config_value https_ssl_keyfile "https_key.pem"
 write_config_value https_ssl_certfile "https_cert.pem"
 write_config_value https_ssl_dhfile "https_dhparams.pem"

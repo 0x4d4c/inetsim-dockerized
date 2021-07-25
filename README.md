@@ -1,5 +1,5 @@
 # inetsim-dockerized
-Dockerfile and scripts to build a [Docker](https://www.docker.com/) image for [INetSim](http://www.inetsim.org/).
+Dockerfile and scripts to build a [Docker](https://www.docker.com/) image for [INetSim](http://www.inetsim.org/). Version of INetSim used: 1.3.2.
 
 # Quickstart
 To start INetSim with DNS, HTTP, HTTPS, and FTP enabled run:

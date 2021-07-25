@@ -75,6 +75,7 @@ INetSim allows you to define static domain ↔ IP mappings. These mappings can b
 | `INETSIM_HTTP_BIND_PORT` | Port number to bind HTTP service to. | `80` |
 | `INETSIM_HTTP_VERSION` | Version string to return in HTTP replies. | `"INetSim HTTP server"` |
 | `INETSIM_HTTP_FAKEMODE` | Turn HTTP fake mode on (`yes`) or off (`on`). | `yes` |
+| `INETSIM_HTTP_POST_LIMIT` | Size limit for HTTP POST requests. | `500000000` |
 
 #### Fake Files
 Fake files are returned by the INetSim HTTP server if `INETSIM_HTTP_FAKEMODE` is enabled. You can specify the files to return based on the file extension in the HTTP request of based on the query path. In any case, the files to serve must be placed in `/opt/inetsim/data/http/fakefiles`.
@@ -89,6 +90,7 @@ The same holds for the mapping between paths and files. Place your own `http_sta
 | `INETSIM_HTTPS_BIND_PORT` | Port number to bind HTTPS service to. | `443` |
 | `INETSIM_HTTPS_VERSION` | Version string to return in HTTPS replies. | `"INetSim HTTPs server"` |
 | `INETSIM_HTTPS_FAKEMODE` | Turn HTTPS fake mode on (`yes`) or off (`on`). | `yes` |
+| `INETSIM_HTTPS_POST_LIMIT` | Size limit for HTTPS POST requests. | `500000000` |
 
 #### Fake Files
 Fake files in the HTTPS service work in the same way as in the HTTP service (see above). Place a file called `https_fakefiles` into `/opt/inetsim/conf/user_configs` to override the [default](default_service_configs/https_fakefiles) mapping between file extensions and files (syntax: `https_fakefile <extension> <filename> <mime-type>`) and a file called `http_static_fakefiles` to `/opt/inetsim/conf/user_configs` to override the [default](default_service_configs/https_static_fakefiles) mapping between paths and files.
@@ -174,6 +176,8 @@ The POP3S service expects the certificate under `/opt/inetsim/data/certs/pop3s_c
 | `INETSIM_TFTP_BIND_PORT` | Port number to bind TFTP service to. | `69` |
 | `INETSIM_TFTP_ALLOW_OVERWRITE` | Allow overwriting of existing files. |  `yes` or `no` | 
 | `INETSIM_TFTP_ENABLE_OPTIONS` | Turn support for tftp options on (`yes`) or off (`no`) | `yes` |
+| `INETSIM_TFTP_MAX_FILESIZE` | Size limit for uploaded files. | `500000000` |
+
 
 #### TFTP Options
 The [default](default_service_configs/tftp_options) can be overridden by placing a file called `tftp_options` into `/opt/inetsim/conf/user_configs`. The syntax per line is `tftp_option <option [parameter(s)]>`. Consult the INetSim documentation for a list of supported capabilities.
@@ -185,6 +189,7 @@ The [default](default_service_configs/tftp_options) can be overridden by placing
 | `INETSIM_FTP_VERSION` | Version string to return in replies to the STAT command. | `"INetSim FTP Server"` |
 | `INETSIM_FTP_BANNER` | The banner string used in FTP greeting message. | `"INetSim FTP Service ready."` |
 | `INETSIM_FTP_RECURSIVE_DELETE` | Allow recursive deletion of directories, even if they are not empty. |  `yes` or `no` |
+| `INETSIM_FTP_MAX_FILESIZE` | Size limit for uploaded files. | `500000000` |
 
 ### FTPS
 | Parameter | Description | Example |
@@ -193,6 +198,7 @@ The [default](default_service_configs/tftp_options) can be overridden by placing
 | `INETSIM_FTPS_VERSION` | Version string to return in replies to the STAT command. | `"INetSim FTPs Server"` |
 | `INETSIM_FTPS_BANNER` | The banner string used in FTP greeting message. | `"INetSim FTP Service ready."` |
 | `INETSIM_FTPS_RECURSIVE_DELETE` | Allow recursive deletion of directories, even if they are not empty. |  `yes` or `no` |
+| `INETSIM_FTPS_MAX_FILESIZE` | Size limit for uploaded files. | `500000000` |
 
 #### SSL/TLS
 The POP3S service expects the certificate under `/opt/inetsim/data/certs/ftps_cert.pem`, the key under `/opt/inetsim/data/certs/ftps_key.pem`, and the DH parameters under `/opt/inetsim/data/certs/ftps_dhparams.pem`. If they are not found, the default files are used.

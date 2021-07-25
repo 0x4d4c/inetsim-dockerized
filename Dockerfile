@@ -33,11 +33,13 @@ RUN set -eu && \
     cp -r data default_data && \
     mkdir -p conf/default_configs && \
     rm -rf \
-        inetsim-${INETSIM_VERSION}.tar.gz \
-        inetsim-${INETSIM_VERSION}.tar.gz.sig \
-        inetsim-archive-signing-key.asc \
+        /inetsim-${INETSIM_VERSION}.tar.gz \
+        /inetsim-${INETSIM_VERSION}.tar.gz.sig \
+        /inetsim-archive-signing-key.asc \
         /root/.gnupg && \
-    apt-get purge -y wget
+    apt-get purge -y wget && \
+    apt-get -y autoremove && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY ./default_service_configs /opt/inetsim/conf/default_configs
 COPY ./generate-inetsim-config.sh /usr/local/bin/generate-inetsim-config.sh

@@ -129,6 +129,7 @@ write_config_values_from_file pop3s_capabilities
 write_config_value tftp_bind_port "$INETSIM_TFTP_BIND_PORT"
 write_config_value tftp_allow_overwrite "$INETSIM_TFTP_ALLOW_OVERWRITE"
 write_config_value tftp_enable_options "$INETSIM_TFTP_ENABLE_OPTIONS"
+write_config_value tftp_max_filesize "$INETSIM_TFTP_MAX_FILESIZE"
 write_config_values_from_file tftp_options
 # Service FTP
 write_config_value ftp_bind_port "$INETSIM_FTP_BIND_PORT"

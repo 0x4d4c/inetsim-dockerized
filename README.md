@@ -45,6 +45,7 @@ Most of the configuration is done via environment variables. Since there are qui
 Some services use of TLS connections. All TLS related files (certificates, keys, DH parameters) have to be stored under `/opt/inetsim/data/certs/`. If this directory is empty, the [entrypoint script(docker-entrypoint.sh) will generate a private key, a self-signed certificate, and a DH parameters file. These will be used by all activated services, which use TLS. If you want to use your own files, simply put them into `/opt/inetsim/data/certs/`, e.g. by mounting a volume.
 
 The following table lists which services uses which files:
+
 | Service | Certificate | Key | DH parameters |
 | --- | --- | --- | --- |
 HTTPS | https_cert.pem | https_key.pem | https_dhparams.pem |

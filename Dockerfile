@@ -1,4 +1,4 @@
-FROM debian:10
+FROM debian:11
 MAINTAINER Martin Lambertz <martin@0x4d4c.xyz>
 
 ENV INETSIM_VERSION=1.3.2 \
